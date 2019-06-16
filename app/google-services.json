@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "882312745821",
+    "firebase_url": "https://tw12-ca7f3.firebaseio.com",
+    "project_id": "tw12-ca7f3",
+    "storage_bucket": "tw12-ca7f3.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:882312745821:android:a8eb59324d86969d",
+        "android_client_info": {
+          "package_name": "com.taylorworld.tw1"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "882312745821-2sukh1l7ple907dnbvujniegsud8o36a.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDC5GXqvKoP2t8zOBWgl7xid37kYuKdimA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "882312745821-2sukh1l7ple907dnbvujniegsud8o36a.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
