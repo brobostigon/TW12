@@ -102,10 +102,6 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             apply()
         }
         Toast.makeText(this, "Strength Saved", Toast.LENGTH_SHORT).show();
-
-        //val database = FirebaseDatabase.getInstance()
-        //val myRef = database.getReference("str")
-        //myRef.setValue(strength)
     }
 
     public fun saveDex(view: View) {
