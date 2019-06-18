@@ -58,11 +58,6 @@ class TitleFragment : Fragment() {
         }
     }
 
-    override fun ChangeFragment(view: View) {
-        val fragment = fragment_title()
-        supportFragmentManager.beginTransaction().replace(R.id.fragment_title, fragment1,"").addToBackStack(null).commit()
-    }
-
     override fun onDetach() {
         super.onDetach()
         listener = null
