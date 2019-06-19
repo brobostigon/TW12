@@ -8,6 +8,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 
+
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
 private const val ARG_PARAM1 = "param1"
@@ -16,13 +17,13 @@ private const val ARG_PARAM2 = "param2"
 /**
  * A simple [Fragment] subclass.
  * Activities that contain this fragment must implement the
- * [TitleFragment.OnFragmentInteractionListener] interface
+ * [MiscFragment.OnFragmentInteractionListener] interface
  * to handle interaction events.
- * Use the [TitleFragment.newInstance] factory method to
+ * Use the [MiscFragment.newInstance] factory method to
  * create an instance of this fragment.
  *
  */
-class TitleFragment : Fragment() {
+class MiscFragment : Fragment() {
     // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
@@ -41,7 +42,7 @@ class TitleFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_title, container, false)
+        return inflater.inflate(R.layout.fragment_misc, container, false)
     }
 
     // TODO: Rename method, update argument and hook method into UI event
@@ -75,8 +76,6 @@ class TitleFragment : Fragment() {
      * for more information.
      */
     interface OnFragmentInteractionListener {
-        //abstract val fragmentTransaction: Any
-
         // TODO: Update argument type and name
         fun onFragmentInteraction(uri: Uri)
     }
@@ -88,12 +87,12 @@ class TitleFragment : Fragment() {
          *
          * @param param1 Parameter 1.
          * @param param2 Parameter 2.
-         * @return A new instance of fragment TitleFragment.
+         * @return A new instance of fragment MiscFragment.
          */
         // TODO: Rename and change types and number of parameters
         @JvmStatic
         fun newInstance(param1: String, param2: String) =
-            TitleFragment().apply {
+            MiscFragment().apply {
                 arguments = Bundle().apply {
                     putString(ARG_PARAM1, param1)
                     putString(ARG_PARAM2, param2)
