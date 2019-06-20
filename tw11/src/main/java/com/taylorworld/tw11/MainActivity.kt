@@ -34,8 +34,8 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
         val fab: FloatingActionButton = findViewById(R.id.fab)
         fab.setOnClickListener { view ->
-            Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                .setAction("Action", null).show()
+            //Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
+            //    .setAction("Action", null).show()
         }
         val drawerLayout: DrawerLayout = findViewById(R.id.drawer_layout)
         val navView: NavigationView = findViewById(R.id.nav_view)
@@ -46,6 +46,16 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         toggle.syncState()
 
         navView.setNavigationItemSelectedListener(this)
+
+        val fragmentManager = supportFragmentManager
+        val fragmentTransaction = fragmentManager.beginTransaction()
+
+        val fragment = TitleFragment()
+        val fragment2 = MiscFragment()
+        fragmentTransaction.add(R.id.contentlayout, fragment)
+        fragmentTransaction.remove(fragment2)
+        //fragmentTransaction.addToBackStack(null)
+        fragmentTransaction.commit()
     }
 
     override fun onBackPressed() {
@@ -77,10 +87,24 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         // Handle navigation view item clicks here.
         when (item.itemId) {
             R.id.nav_home -> {
-                // Handle the camera action
+                val fragmentManager = supportFragmentManager
+                val fragmentTransaction = fragmentManager.beginTransaction()
+
+                val fragment = TitleFragment()
+                //val fragment2 = MiscFragment()
+                fragmentTransaction.replace(R.id.contentlayout, fragment)
+                fragmentTransaction.addToBackStack(null)
+                fragmentTransaction.commit()
             }
             R.id.nav_gallery -> {
+                val fragmentManager = supportFragmentManager
+                val fragmentTransaction = fragmentManager.beginTransaction()
 
+                //val fragment = TitleFragment()
+                val fragment2 = MiscFragment()
+                fragmentTransaction.replace(R.id.contentlayout, fragment2)
+                fragmentTransaction.addToBackStack(null)
+                fragmentTransaction.commit()
             }
             R.id.nav_slideshow -> {
 
@@ -100,7 +124,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         return true
     }
 
-    public fun saveStr(view: View) {
+        public fun saveStr(view: View) {
         var strength = Integer.parseInt(editText2.text.toString())
         // this should be getPreferences
         val sharedPref = this?.getPreferences(Context.MODE_PRIVATE);
@@ -109,10 +133,6 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             apply()
         }
         Toast.makeText(this, "Strength Saved", Toast.LENGTH_SHORT).show();
-
-        //val database = FirebaseDatabase.getInstance()
-        //val myRef = database.getReference("str")
-        //myRef.setValue(strength)
     }
 
     public fun saveDex(view: View) {
