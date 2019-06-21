@@ -1,6 +1,8 @@
 package com.taylorworld.tw11
 
+import android.app.PendingIntent.getActivity
 import android.content.Context
+import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
 import android.support.design.widget.FloatingActionButton
@@ -32,11 +34,11 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         val toolbar: Toolbar = findViewById(R.id.toolbar)
         setSupportActionBar(toolbar)
 
-        val fab: FloatingActionButton = findViewById(R.id.fab)
-        fab.setOnClickListener { view ->
+        //val fab: FloatingActionButton = findViewById(R.id.fab)
+        //fab.setOnClickListener { view ->
             //Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
             //    .setAction("Action", null).show()
-        }
+        //}
         val drawerLayout: DrawerLayout = findViewById(R.id.drawer_layout)
         val navView: NavigationView = findViewById(R.id.nav_view)
         val toggle = ActionBarDrawerToggle(
@@ -87,6 +89,10 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         // Handle navigation view item clicks here.
         when (item.itemId) {
             R.id.nav_home -> {
+                val i = Intent(Intent.ACTION_VIEW, Uri.parse("https://www.facebook.com/brobostigon/"))
+                startActivity(i)
+            }
+            R.id.nav_gallery -> {
                 val fragmentManager = supportFragmentManager
                 val fragmentTransaction = fragmentManager.beginTransaction()
 
@@ -96,7 +102,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                 fragmentTransaction.addToBackStack(null)
                 fragmentTransaction.commit()
             }
-            R.id.nav_gallery -> {
+            R.id.nav_slideshow -> {
                 val fragmentManager = supportFragmentManager
                 val fragmentTransaction = fragmentManager.beginTransaction()
 
@@ -105,9 +111,6 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                 fragmentTransaction.replace(R.id.contentlayout, fragment2)
                 fragmentTransaction.addToBackStack(null)
                 fragmentTransaction.commit()
-            }
-            R.id.nav_slideshow -> {
-
             }
             R.id.nav_tools -> {
 
