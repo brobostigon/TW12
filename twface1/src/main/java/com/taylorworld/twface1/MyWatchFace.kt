@@ -15,7 +15,7 @@ import android.graphics.Rect
 import android.os.Bundle
 import android.os.Handler
 import android.os.Message
-import android.support.v7.graphics.Palette
+import androidx.palette.graphics.Palette
 import android.support.wearable.watchface.CanvasWatchFaceService
 import android.support.wearable.watchface.WatchFaceService
 import android.support.wearable.watchface.WatchFaceStyle
@@ -139,7 +139,7 @@ class MyWatchFace : CanvasWatchFaceService() {
             mBackgroundBitmap = BitmapFactory.decodeResource(resources, R.drawable.bg)
 
             /* Extracts colors from background image to improve watchface style. */
-            Palette.from(mBackgroundBitmap).generate {
+            androidx.palette.graphics.Palette.from(mBackgroundBitmap).generate {
                 it?.let {
                     mWatchHandHighlightColor = it.getVibrantColor(Color.RED)
                     mWatchHandColor = it.getLightVibrantColor(Color.WHITE)

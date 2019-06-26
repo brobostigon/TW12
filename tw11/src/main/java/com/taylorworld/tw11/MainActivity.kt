@@ -1,29 +1,30 @@
 package com.taylorworld.tw11
 
-import android.app.PendingIntent.getActivity
 import android.content.Context
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
-import android.support.design.widget.FloatingActionButton
-import android.support.design.widget.Snackbar
-import android.support.v4.view.GravityCompat
-import android.support.v7.app.ActionBarDrawerToggle
+import androidx.core.view.GravityCompat
+import androidx.appcompat.app.ActionBarDrawerToggle
 import android.view.MenuItem
-import android.support.v4.widget.DrawerLayout
-import android.support.design.widget.NavigationView
-import android.support.v4.app.FragmentManager
-import android.support.v4.app.FragmentTransaction
-import android.support.v7.app.AppCompatActivity
-import android.support.v7.widget.Toolbar
+import androidx.drawerlayout.widget.DrawerLayout
+import com.google.android.material.navigation.NavigationView
+import androidx.fragment.app.FragmentManager
+import androidx.fragment.app.FragmentTransaction
+import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.Toolbar
 import android.view.Menu
 import android.view.View
 import android.widget.Toast
+import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.content_main.*
 import kotlinx.android.synthetic.main.fragment_misc.*
 import kotlinx.android.synthetic.main.fragment_title.*
+import com.google.android.gms.ads.MobileAds
 
 class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener ,
     TitleFragment.OnFragmentInteractionListener {
+
     override fun onFragmentInteraction(uri: Uri) {
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
@@ -31,15 +32,18 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        MobileAds.initialize(this, "ca-app-pub-5440535656998027~9218214664")
+
         val toolbar: Toolbar = findViewById(R.id.toolbar)
         setSupportActionBar(toolbar)
 
         //val fab: FloatingActionButton = findViewById(R.id.fab)
         //fab.setOnClickListener { view ->
-            //Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-            //    .setAction("Action", null).show()
+        //Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
+        //    .setAction("Action", null).show()
         //}
-        val drawerLayout: DrawerLayout = findViewById(R.id.drawer_layout)
+        val drawerLayout: androidx.drawerlayout.widget.DrawerLayout = findViewById(R.id.drawer_layout)
         val navView: NavigationView = findViewById(R.id.nav_view)
         val toggle = ActionBarDrawerToggle(
             this, drawerLayout, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close
@@ -56,12 +60,12 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         val fragment2 = MiscFragment()
         fragmentTransaction.add(R.id.contentlayout, fragment)
         fragmentTransaction.remove(fragment2)
-        //fragmentTransaction.addToBackStack(null)
         fragmentTransaction.commit()
+
     }
 
     override fun onBackPressed() {
-        val drawerLayout: DrawerLayout = findViewById(R.id.drawer_layout)
+        val drawerLayout: androidx.drawerlayout.widget.DrawerLayout = findViewById(R.id.drawer_layout)
         if (drawerLayout.isDrawerOpen(GravityCompat.START)) {
             drawerLayout.closeDrawer(GravityCompat.START)
         } else {
@@ -92,37 +96,39 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                 val i = Intent(Intent.ACTION_VIEW, Uri.parse("https://www.facebook.com/brobostigon/"))
                 startActivity(i)
             }
-            R.id.nav_gallery -> {
-                val fragmentManager = supportFragmentManager
-                val fragmentTransaction = fragmentManager.beginTransaction()
 
-                val fragment = TitleFragment()
-                //val fragment2 = MiscFragment()
-                fragmentTransaction.replace(R.id.contentlayout, fragment)
-                fragmentTransaction.addToBackStack(null)
-                fragmentTransaction.commit()
-            }
-            R.id.nav_slideshow -> {
-                val fragmentManager = supportFragmentManager
-                val fragmentTransaction = fragmentManager.beginTransaction()
+        R.id.nav_gallery -> {
+            val fragmentManager = supportFragmentManager
+            val fragmentTransaction = fragmentManager.beginTransaction()
 
-                //val fragment = TitleFragment()
-                val fragment2 = MiscFragment()
-                fragmentTransaction.replace(R.id.contentlayout, fragment2)
-                fragmentTransaction.addToBackStack(null)
-                fragmentTransaction.commit()
-            }
-            R.id.nav_tools -> {
-
-            }
-            R.id.nav_share -> {
-
-            }
-            R.id.nav_send -> {
-
-            }
+            val fragment = TitleFragment()
+            //val fragment2 = MiscFragment()
+            fragmentTransaction.replace(R.id.contentlayout, fragment)
+            fragmentTransaction.addToBackStack(null)
+            fragmentTransaction.commit()
         }
-        val drawerLayout: DrawerLayout = findViewById(R.id.drawer_layout)
+        R.id.nav_slideshow -> {
+            val fragmentManager = supportFragmentManager
+            val fragmentTransaction = fragmentManager.beginTransaction()
+
+            //val fragment = TitleFragment()
+            val fragment2 = MiscFragment()
+            fragmentTransaction.replace(R.id.contentlayout, fragment2)
+            fragmentTransaction.addToBackStack(null)
+            fragmentTransaction.commit()
+        }
+        R.id.nav_tools -> {
+            val i = Intent(Intent.ACTION_VIEW, Uri.parse("http://taylorworld.me.uk/privacy-policy.html"))
+            startActivity(i)
+        }
+        R.id.nav_share -> {
+
+        }
+        R.id.nav_send -> {
+
+        }
+    }
+        val drawerLayout: androidx.drawerlayout.widget.DrawerLayout = findViewById(R.id.drawer_layout)
         drawerLayout.closeDrawer(GravityCompat.START)
         return true
     }
