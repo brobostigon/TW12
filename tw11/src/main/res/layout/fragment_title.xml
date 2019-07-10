@@ -148,6 +148,16 @@
                 android:onClick="saveStr"
                 android:clickable="true"
                 android:focusable="true" app:layout_constraintTop_toTopOf="parent" android:layout_marginTop="16dp"/>
+        <com.google.android.gms.ads.AdView
+                xmlns:ads="http://schemas.android.com/apk/res-auto"
+                android:id="@+id/adView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_alignParentBottom="true"
+                ads:adSize="SMART_BANNER"
+                ads:adUnitId="ca-app-pub-5440535656998027~9218214664">
+        </com.google.android.gms.ads.AdView>
 </androidx.constraintlayout.widget.ConstraintLayout>
         </androidx.core.widget.NestedScrollView>
 </FrameLayout>

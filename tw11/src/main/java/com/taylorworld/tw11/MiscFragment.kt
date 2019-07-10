@@ -9,6 +9,9 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import kotlinx.android.synthetic.main.fragment_misc.*
+import com.google.android.gms.ads.MobileAds
+import com.google.android.gms.ads.AdRequest
+import com.google.android.gms.ads.AdView
 
 
 // TODO: Rename parameter arguments, choose names that match

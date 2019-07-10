@@ -21,9 +21,13 @@ import kotlinx.android.synthetic.main.content_main.*
 import kotlinx.android.synthetic.main.fragment_misc.*
 import kotlinx.android.synthetic.main.fragment_title.*
 import com.google.android.gms.ads.MobileAds
+import com.google.android.gms.ads.AdRequest
+import com.google.android.gms.ads.AdView
 
 class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener ,
     TitleFragment.OnFragmentInteractionListener {
+
+    lateinit var mAdView : AdView
 
     override fun onFragmentInteraction(uri: Uri) {
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
@@ -61,6 +65,10 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         fragmentTransaction.add(R.id.contentlayout, fragment)
         fragmentTransaction.remove(fragment2)
         fragmentTransaction.commit()
+
+        mAdView = findViewById(R.id.adView)
+        val adRequest = AdRequest.Builder().build()
+        mAdView.loadAd(adRequest)
 
     }
 
