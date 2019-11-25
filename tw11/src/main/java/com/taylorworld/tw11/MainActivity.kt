@@ -126,7 +126,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             fragmentTransaction.commit()
         }
         R.id.nav_tools -> {
-            val i = Intent(Intent.ACTION_VIEW, Uri.parse("http://taylorworld.me.uk/privacy-policy.html"))
+            val i = Intent(Intent.ACTION_VIEW, Uri.parse("http://ssh.taylorworld.one/privacy-policy.html"))
             startActivity(i)
         }
         R.id.nav_share -> {
